@@ -57,17 +57,17 @@ Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
 #define LCD_E_MASK               (0x01 << LCD_E_BIT)
 #define LCD_RS_MASK              (0x01 << LCD_RS_BIT)
 
-#define i_DISP_RIGHT             0x1C
-#define i_DISP_LEFT              0x18
-#define i_CURSOR_RIGHT           0x14
-#define i_CURSOR_LEFT            0x10
-#define i_DISP_CLEAR             0x01
-#define i_RET_HOME               0x02
 #define SET_ADDRESS              0x80
-#define i_DISP_ON                0x0C
-#define i_DISP_OFF               0x08
-#define bit_CURSOR               0x02
-#define bit_CURSORBLINK          0x01
+#define CMD_DISP_RIGHT           0x1C
+#define CMD_DISP_LEFT            0x18
+#define CMD_CURSOR_RIGHT         0x14
+#define CMD_CURSOR_LEFT          0x10
+#define CMD_DISP_CLEAR           0x01
+#define CMD_RET_HOME             0x02
+#define CMD_DISP_ON              0x0C
+#define CMD_DISP_OFF             0x08
+#define CURSOR_BIT               0x02
+#define CURSORBLINK_BIT          0x01
 
 #define L1_START                 0x00
 #define L2_START                 0x40
@@ -256,7 +256,7 @@ void rotate_text_unit(byte tag, byte direction, byte stride);
 
 /******************************************************************************
  * Summary:         Erases or rewrites the logical text unit identified by "tag".
- *                  This function is useful for accomplishing a blinking effect.
+ *                  This function is useful for generating a blinking effect.
  *
  * Input:           byte tag             :    Identifies a text unit.
  *                  byte on              :    Set to "1" to rewrite text. Set to "0" to erase.

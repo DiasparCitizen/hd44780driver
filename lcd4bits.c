@@ -79,8 +79,8 @@ void reset_lcd(byte cursor_on, byte blink_on){
     enable();
 
     aux = 0b00001100;
-    if (cursor_on) aux |= bit_CURSOR;
-    if (blink_on) aux |= bit_CURSORBLINK;
+    if (cursor_on) aux |= CURSOR_BIT;
+    if (blink_on) aux |= CURSORBLINK_BIT;
     _set_data(aux);
     enable();
 
@@ -96,7 +96,7 @@ void reset_lcd(byte cursor_on, byte blink_on){
 }
 
 void clear_screen(void){
-    exec_instruction(i_DISP_CLEAR);
+    exec_instruction(CMD_DISP_CLEAR);
 }
 
 void write_char(char ch){
@@ -144,36 +144,36 @@ void gotoaddress(byte address){
 }
 
 void gohome(void){
-    exec_instruction(i_RET_HOME);
+    exec_instruction(CMD_RET_HOME);
 }
 
 void switch_display(byte on){
-    if (on) exec_instruction(i_DISP_ON);
-    else exec_instruction(i_DISP_OFF);
+    if (on) exec_instruction(CMD_DISP_ON);
+    else exec_instruction(CMD_DISP_OFF);
 }
 
 void move_cursor_right(byte times){
     byte i;
     for (i = 0; i < times; i++)
-        exec_instruction(i_CURSOR_RIGHT);
+        exec_instruction(CMD_CURSOR_RIGHT);
 }
 
 void move_cursor_left(byte times){
     byte i;
     for (i = 0; i < times; i++)
-        exec_instruction(i_CURSOR_LEFT);
+        exec_instruction(CMD_CURSOR_LEFT);
 }
 
 void move_screen_left(byte times){
     byte i;
     for (i = 0; i < times; i++)
-        exec_instruction(i_DISP_RIGHT);
+        exec_instruction(CMD_DISP_RIGHT);
 }
 
 void move_screen_right(byte times){
     byte i;
     for (i = 0; i < times; i++)
-        exec_instruction(i_DISP_LEFT);
+        exec_instruction(CMD_DISP_LEFT);
 }
 
 void erase_line(byte start_address){
