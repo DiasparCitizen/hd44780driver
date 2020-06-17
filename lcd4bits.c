@@ -194,12 +194,12 @@ void write_text(char str[], byte start_address, byte jump){
     if (!jump){
 
         for (i = 0; i < len; i++)
-			write_char(str[i]);
+            write_char(str[i]);
 
     }else{
 
         if (len > DISPLAY_WIDTH*2)
-			len = DISPLAY_WIDTH*2;
+		    len = DISPLAY_WIDTH*2;
 
         next_address = start_address >= L2_START ? start_address - L1_START : start_address + L2_START;
 
